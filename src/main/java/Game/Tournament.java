@@ -50,7 +50,6 @@ public class Tournament {
             case BASE -> {
                 playInLevel(list, LeagueLevel.FIRST);
                 playInLevel(list, LeagueLevel.HIGHER);
-//                playInLevel(list, LeagueLevel.FIRST);
                 playInLevel(list, LeagueLevel.SECOND);
                 System.out.println("League " + leagueType + " leaders in each level");
                 printResult(listLeader);

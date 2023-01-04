@@ -9,13 +9,13 @@ public class Node<T> {
         return node != null && node.value != null;
     }
 
-    private void createNode(Node<T> node, T value) {
+    public void createNode(Node<T> node, T value) {
         node.left = new Node<>();
         node.right = new Node<>();
         node.value = value;
     }
 
-    private void insert(Node<T> node, T value) {
+    public void insert(Node<T> node, T value) {
         if (value instanceof Comparable) {
             if (!isNodeExist(node)) {
                 createNode(node, value);
@@ -39,7 +39,7 @@ public class Node<T> {
             return search(node.right, value);
     }
 
-    private Node<T> getMin(Node<T> node) {
+    public Node<T> getMin(Node<T> node) {
         if (!isNodeExist(node)) {
             return null;
         }
@@ -49,7 +49,7 @@ public class Node<T> {
         return getMin(node.left);
     }
 
-    private Node<T> getMax(Node<T> node) {
+    public Node<T> getMax(Node<T> node) {
         if (!isNodeExist(node)) {
             return null;
         }
@@ -59,16 +59,16 @@ public class Node<T> {
         return getMax(node.right);
     }
 
-    private void inOrderTraversal(Node<T> node) {
+    public void inOrderTraversal(Node<T> node) {
         if (!isNodeExist(node)) {
             return;
         }
         inOrderTraversal(node.left);
-        System.out.println("[ " + node.value + " ]" + getChildrenCount(node));
+        System.out.println("[ " + node.value + " ]");
         inOrderTraversal(node.right);
     }
 
-    private void postOrderTraversal(Node<T> node) {
+    public void postOrderTraversal(Node<T> node) {
         if (!isNodeExist(node)) {
             return;
         }
@@ -77,7 +77,7 @@ public class Node<T> {
         System.out.println("[ " + node.value + " ]");
     }
 
-    private void directOrderTraversal(Node<T> node) {
+    public void directOrderTraversal(Node<T> node) {
         if (!isNodeExist(node)) {
             return;
         }
@@ -109,7 +109,7 @@ public class Node<T> {
     }
 
     //todo
-    private boolean remove(Node<T> root, T value) {
+    public boolean remove(Node<T> root, T value) {
         Node<T> node = search(root, value);
         boolean isRemove;
         if (isNodeExist(node)) {
@@ -122,22 +122,5 @@ public class Node<T> {
             isRemove = true;
         } else isRemove = false;
         return isRemove;
-    }
-
-    public static void main(String[] args) {
-
-        Integer[] digit = {9, 2, 5, 13, 6, 10, 14, 7, 33, 44, 3, 4, 22, 19, 25, 18, 20};
-        Node<Integer> node = new Node<>();
-        node.createNode(node, 9);
-        for (int i = 1; i < digit.length; i++) {
-            node.insert(node, digit[i]);
-        }
-        node.inOrderTraversal(node);
-        node.postOrderTraversal(node);
-        node.directOrderTraversal(node);
-
-        boolean isRemove = node.remove(node, 10);
-        System.out.println("Removing is " + isRemove);
-        node.inOrderTraversal(node);
     }
 }

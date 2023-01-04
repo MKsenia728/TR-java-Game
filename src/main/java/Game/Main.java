@@ -1,5 +1,8 @@
 package Game;
 
+import Game.enums.LeagueType;
+import Game.nodeTest.NodeTest;
+
 public class Main {
 
     /*
@@ -28,5 +31,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         OrganisationTournament organisationTournament = new OrganisationTournament();
         organisationTournament.makeTournaments();
+        NodeTest nodeTest = new NodeTest(LeagueType.YOUTH);
+        nodeTest.nodeTest();
     }
 }
